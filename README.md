@@ -1,0 +1,1 @@
+**In this repository will see shell, basics**
