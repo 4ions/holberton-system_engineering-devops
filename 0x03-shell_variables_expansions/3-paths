@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $PATH | cat -d : -f
+echo $PATH | wc -l
