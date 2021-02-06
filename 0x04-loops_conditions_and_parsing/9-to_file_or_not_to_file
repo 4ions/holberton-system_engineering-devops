@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Bash script that gives you information about fil
+file="holbertonschool"
+if [ ! -e "$file" ]
+then
+	echo "holbertonschool file does not exist"
+	exit 0
+
+	
+else
+	echo "holbertonschool file exists"
+	if [ -s "$file" ]
+	then
+		echo "holbertonschool file is not empty"
+	else
+		echo "holbertonschool file is empty"
+	fi
+	if [ -f "$file" ]
+	then
+		echo "holbertonschool is a regular file"
+	fi
+fi
+
