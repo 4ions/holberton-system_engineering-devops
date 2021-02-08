@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script that displays lines containint the bash word
+# shellcheck disable=SC2009
+ps auxf | grep bash
