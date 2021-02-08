@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Creat file, display message
+echo $$ > /var/run/holbertonscript.pid
+trap sigterm SIGTERM
+sigterm()
+{
+	echo "I hate the kill command"
+	rm -rf /var/run/holbertonscript.pid
+	exit 0
+}
+trap sigint SIGINT
+sigint()
+{
+	echo "Y U no love me?!"
+}
+trap sigquit SIGQUIT 
+sigquit()
+{
+	rm -rf /var/run/holbertonscript.pid
+	exit 0
+}
+
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
