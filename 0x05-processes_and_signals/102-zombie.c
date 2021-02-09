@@ -2,10 +2,10 @@
 #include <unistd.h>
 
 /**
- *  * infinite_while - function that keeps program running
- *   *
- *    * Return: 0 on success
- *     */
+ *infinite_while - function that keeps program running
+ *
+ *Return: 0 on success
+ **/
 int infinite_while(void)
 {
 	while (1)
@@ -16,9 +16,9 @@ int infinite_while(void)
 }
 
 /**
- * main - creates 5 zombie processes
+ *main - creates 5 zombie processes
  *
- * Return: 0 on success
+ *Return: 0 on success
  **/
 int main(void)
 {
