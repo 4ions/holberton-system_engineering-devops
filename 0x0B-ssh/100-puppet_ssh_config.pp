@@ -1,11 +1,11 @@
-# Turns off password authentication and uses holberton key
-file_line { 'Turn off passwd auth':
+# client configuration with puppet
+file_line { 'Turn off Authentication':
   ensure => 'present',
-  path   => '/etc/ssh/ssh_config',
-  line   => '    PasswordAuthentication no',
+  path   =>  '/etc/ssh/ssh_config',
+  line   =>  '    PasswordAuthentication no',
 }
 
-file_line { 'Declare identity file':
+file_line { 'IdentityFile':
   ensure => 'present',
   path   => '/etc/ssh/ssh_config',
   line   => '    IdentityFile ~/.ssh/holberton',
