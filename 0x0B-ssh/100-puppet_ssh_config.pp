@@ -1,8 +1,8 @@
 # client configuration with puppet
 file_line { 'Turn off Authentication':
   ensure => 'present',
-  path   =>  '/etc/ssh/ssh_config',
-  line   =>  '    PasswordAuthentication no',
+  path   => '/etc/ssh/ssh_config',
+  line   => '    PasswordAuthentication no',
 }
 
 file_line { 'IdentityFile':
