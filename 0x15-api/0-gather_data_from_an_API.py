@@ -4,8 +4,9 @@
 import requests
 from sys import argv
 
-def data():
 
+def data():
+    """ data function """
     id_employed = int(argv[1])
     name = ""
 
@@ -31,6 +32,7 @@ def data():
 
     for each in complet:
         print("\t {}".format(each))
+
 
 if __name__ == '__main__':
     data()
