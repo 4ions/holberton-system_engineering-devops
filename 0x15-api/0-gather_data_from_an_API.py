@@ -4,28 +4,33 @@
 import requests
 from sys import argv
 
-id_employed = int(argv[1])
-name = ""
+def data():
 
-response = requests.get('https://jsonplaceholder.typicode.com/todos/')
-response_users = requests.get('https://jsonplaceholder.typicode.com/users')
+    id_employed = int(argv[1])
+    name = ""
 
-for users in response_users.json():
-    if users.get('id') == id_employed:
-        name = users.get('name')
+    response = requests.get('https://jsonplaceholder.typicode.com/todos/')
+    response_users = requests.get('https://jsonplaceholder.typicode.com/users')
 
-complet = []
-for data in response.json():
-    if data.get('userId') == id_employed and data.get('completed'):
-        complet.append(data.get('title'))
+    for users in response_users.json():
+        if users.get('id') == id_employed:
+            name = users.get('name')
 
-counter = 0
-for count in response.json():
-    if count.get('userId') == id_employed:
-        counter += 1
+    complet = []
+    for data in response.json():
+        if data.get('userId') == id_employed and data.get('completed'):
+            complet.append(data.get('title'))
 
-print("Employee {} is done with tasks({}/{}):"
-      .format(name, len(complet), counter))
+    counter = 0
+    for count in response.json():
+        if count.get('userId') == id_employed:
+            counter += 1
 
-for each in complet:
-    print("\t {}".format(each))
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name, len(complet), counter))
+
+    for each in complet:
+        print("\t {}".format(each))
+
+if __name__ == '__main__':
+    data()
