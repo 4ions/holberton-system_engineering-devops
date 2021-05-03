@@ -24,9 +24,8 @@ for count in response.json():
     if count.get('userId') == id_employed:
         counter += 1
 
-print("Employee {} is done with tasks({}/{}):".format(name,len(complet), counter))
+print("Employee {} is done with tasks({}/{}):"
+      .format(name, len(complet), counter))
 
 for each in complet:
     print("\t {}".format(each))
-
-
