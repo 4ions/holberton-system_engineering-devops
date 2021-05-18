@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Get ALL hot posts'''
+""" Recursion in python """
 import pprint
 import requests
 
@@ -7,7 +7,7 @@ BASE_URL = 'http://reddit.com/r/{}/hot.json'
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    '''Get ALL hot posts'''
+    """ Return a list containing the titles """
     headers = {'User-agent': 'Unix:0-subs:v1'}
     params = {'limit': 100}
     if isinstance(after, str):
