@@ -11,7 +11,7 @@ def top_ten(subreddit):
                             headers=headers)
     children = response.json().get('data', {}).get('children', {})
     if response.status_code != 200 or not children:
-        return None
+        return print(None)
 
     for data in children[0:10]:
         print(data.get('data', {}).get('title'))
