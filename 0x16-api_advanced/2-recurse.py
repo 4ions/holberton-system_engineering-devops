@@ -1,17 +1,28 @@
-#!/us/bin/python3
-""" recursive in python """ 
-
+#!/usr/bin/python3
+'''Get ALL hot posts'''
+import pprint
 import requests
+
+BASE_URL = 'http://reddit.com/r/{}/hot.json'
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    """ Return a list containing the titles """
+    '''Get ALL hot posts'''
     headers = {'User-agent': 'Unix:0-subs:v1'}
-    data = requests.get('http://reddit.com/r/{}/hot.json'.format(subreddit),
-                        headers=headers).json().get('data', None)
-    if data is None:
+    params = {'limit': 100}
+    if isinstance(after, str):
+        if after != "STOP":
+            params['after'] = after
+        else:
+            return hot_list
+    response = requests.get(BASE_URL.format(subreddit),
+                            headers=headers, params=params)
+    if response.status_code != 200:
         return None
-    hot_list += data.get('children', [])
-    if data.get('after', None) is not None:
-        recurse(subreddit, hot_list, data.get('after', None))
-    return hot_list
+    data = response.json().get('data', {})
+    after = data.get('after', 'STOP')
+    if not after:
+        after = "STOP"
+    hot_list = hot_list + [post.get('data', {}).get('title')
+                           for post in data.get('children', [])]
+    return recurse(subreddit, hot_list, after)
